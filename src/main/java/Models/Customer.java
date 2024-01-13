@@ -1,4 +1,4 @@
-package Controllers;
+package Models;
 
 public class Customer {
     public String name;
