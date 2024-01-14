@@ -32,7 +32,7 @@ public class DatabaseConnection {
             }else if(instance.connection.isClosed()){
                 instance = new DatabaseConnection();
             }else{
-                System.out.println("Already Connected!");
+                System.out.println("Connection is already there!");
                 return instance;
             }
             return instance;
