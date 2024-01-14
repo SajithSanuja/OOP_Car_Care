@@ -5,6 +5,7 @@ import com.mysql.cj.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseConnection {
     private final String url = "jdbc:mysql://localhost:3306/carcare_db";
@@ -39,6 +40,17 @@ public class DatabaseConnection {
         }catch (SQLException sqlex){
             System.out.println("Database Connection Error! " + sqlex.getMessage());
             return null;
+        }
+    }
+
+    public boolean ExecuteQuery(String sqlQ){
+        try{
+            Statement statement =  connection.createStatement();
+            int result = statement.executeUpdate(sqlQ);
+            return result > 0;
+        }catch (SQLException ex){
+            System.out.println("SQL Error " + ex.getMessage());
+            return false;
         }
     }
 
